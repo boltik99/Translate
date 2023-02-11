@@ -10,17 +10,14 @@
         <Grid.RowDefinitions>
         </Grid.RowDefinitions>
         <DockPanel Margin="0,0,0,107" >
-            <TextBox KeyDown="TextBox_KeyDown" HorizontalAlignment="Center" Name="tb2" Margin="0,168,0,0" TextWrapping="Wrap" Text="TextBox1" VerticalAlignment="Top" Width="467" Height="110" FontFamily="Comic Sans MS" FontSize="36" FontWeight="Bold"/>
+            <TextBox KeyDown="TextBox_KeyDown" HorizontalAlignment="Center" Name="tb2" Margin="0,168,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="467" Height="110" FontFamily="Comic Sans MS" FontSize="36" FontWeight="Bold"/>
         </DockPanel>
-        <TextBox  HorizontalAlignment="Center" Name="tb1" Margin="0,33,0,0" TextWrapping="Wrap" Text="TextBox1" VerticalAlignment="Top" Width="467" Height="110" FontSize="36" FontFamily="Comic Sans MS" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Center" Style="{StaticResource placeHolder}" Tag="Enter проверять, L.Ctrl чистка, R.Shift перевод" Name="tb1" Margin="0,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="467" Height="110" FontSize="36" FontFamily="Comic Sans MS" FontWeight="Bold"/>
         <Button x:Name="bt1" Content="Start" HorizontalAlignment="Left" Margin="22,304,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="158" Height="51" FontFamily="Comic Sans MS" FontSize="20" Background="#FF87DFEF" Click="bt1_Click"></Button>
         <TextBox x:Name="tb3" HorizontalAlignment="Left" Margin="434,8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="55" FontFamily="Comic Sans MS"/>
         <TextBox x:Name="tb4" HorizontalAlignment="Left" Margin="266,304,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223" FontFamily="Comic Sans MS"/>
-        <RadioButton Name="rb1" Content="Rus -> Eng" HorizontalAlignment="Left" Margin="266,337,0,0" VerticalAlignment="Top" Checked="rb1_Checked"/>
-        <RadioButton x:Name="rb2" Content="Eng -> Rus" HorizontalAlignment="Left" Margin="381,337,0,0" VerticalAlignment="Top" Checked="rb2_Checked"/>
+        <RadioButton Name="rb1" IsChecked="True" Content="Rus -> Eng" HorizontalAlignment="Left" Margin="266,337,0,0" VerticalAlignment="Top" />
+        <RadioButton x:Name="rb2" Content="Eng -> Rus" HorizontalAlignment="Left" Margin="381,337,0,0" VerticalAlignment="Top" />
         <Button Content="Clear" HorizontalAlignment="Left" Margin="197,304,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Comic Sans MS" Background="#FFFF7588" Width="45" Height="48" Click="Button_Click"/>
-
-
-
     </Grid>
 </Window>
