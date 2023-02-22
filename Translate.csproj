@@ -5,14 +5,12 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>true</SelfContained> 
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
-  
-  <ItemGroup>
+
+<ItemGroup>
     <Content Include="library.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
 </Project>

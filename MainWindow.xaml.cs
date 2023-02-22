@@ -4,16 +4,22 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.IO;
+using System.Windows.Resources;
+using System.Windows.Documents;
+using System.Linq;
 
 namespace Translate
 {
     public partial class MainWindow : Window
     {
+        Window1 win = new Window1();
+
         static int capacity = 2000;
         static int size_block = 100;
 
         List<string> block = new List<string>();
         List<string> lib = new List<string>();
+        List<string> wrong_list = new List<string>();
 
         int index = 1;
         int right = 0;
@@ -29,7 +35,7 @@ namespace Translate
         public void read(string path)
         {
             lib = new List<string>(capacity);
-            if (System.IO.Path.Exists(path))
+            if (System.IO.File.Exists(path))
             {
                 using (var f = new StreamReader(path))
                 {
@@ -45,6 +51,20 @@ namespace Translate
             {
                 throw new Exception($"file {path} does not exist");
             }
+        }
+
+        public void wr()
+        {
+            var newList = new List<string>(wrong_list.Distinct());
+
+            for (int i = 0; i < newList.Count; i += 2)
+            {
+                win.tb_list.Text += newList[i]; 
+                win.tb_list.Text += " -> "; 
+                win.tb_list.Text += newList[i + 1]; 
+                win.tb_list.Text += "\r\n";
+            }
+            win.Show();
         }
 
         public void add_50_words_to_block(int number_block)
@@ -78,7 +98,7 @@ namespace Translate
             //проверка пустоты ТБ - четный индекс это англ слово
             if (!int.TryParse(tb3.Text, out int number_block))
             {
-                MessageBox.Show("Введи значение дебил! Сверху в углу! ");
+                MessageBox.Show("Введи значение дебил! Сверху в углу! От 1 до 20! ");
                 return;
             }
 
@@ -110,13 +130,14 @@ namespace Translate
                         //exit
                         if (block.Count == 0)
                         {
-                            MessageBox.Show("Правильно: " + right.ToString() + " из: " + (chet + 1).ToString());
+                            MessageBox.Show("Правильно: " + right.ToString() + " из: " + chet.ToString());
                             tb1.Text = "";
                             tb2.Text = "";
                             tb3.Text = "";
                             tb4.Text = "";
                             right = 0;
                             chet = 0;
+                            wr();
                             return;
                         }
 
@@ -137,7 +158,7 @@ namespace Translate
                 if (e.Key != Key.Enter || e.Key == Key.Back) { tb2.Foreground = Brushes.Black; }
 
                 //подсказка
-                if (e.Key == Key.RightShift) { tb2.Foreground = Brushes.Blue; tb2.Text = block[index - 1]; right--; }
+                if (e.Key == Key.RightShift) { tb2.Foreground = Brushes.Blue; tb2.Text = block[index - 1]; right--; wrong_list.Add(block[index]); wrong_list.Add(block[index - 1]); }
 
                 //читска tb2
                 if (e.Key == Key.LeftCtrl) tb2.Text = "";
@@ -157,13 +178,14 @@ namespace Translate
                         //exit
                         if (block.Count == 0)
                         {
-                            MessageBox.Show("Правильно: " + right.ToString() + " из: " + (chet + 1).ToString());
+                            MessageBox.Show("Правильно: " + right.ToString() + " из: " + chet.ToString());
                             tb1.Text = "";
                             tb2.Text = "";
                             tb3.Text = "";
                             tb4.Text = "";
                             right = 0;
                             chet = 0;
+                            wr();
                             return;
                         }
 
@@ -184,7 +206,7 @@ namespace Translate
                 if (e.Key != Key.Enter || e.Key == Key.Back) { tb2.Foreground = Brushes.Black; }
 
                 //подсказка
-                if (e.Key == Key.RightShift) { tb2.Foreground = Brushes.Blue; tb2.Text = block[index + 1]; right--; }
+                if (e.Key == Key.RightShift) { tb2.Foreground = Brushes.Blue; tb2.Text = block[index + 1]; right--; wrong_list.Add(block[index]); wrong_list.Add(block[index + 1]); }
 
                 //читска tb2
                 if (e.Key == Key.LeftCtrl) tb2.Text = "";

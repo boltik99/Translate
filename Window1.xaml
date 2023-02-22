@@ -1,0 +1,14 @@
+﻿<Window x:Class="Translate.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Translate"
+        mc:Ignorable="d"
+        Title="Window1" Height="410" Width="350" FontSize="24" FontFamily="Comic Sans MS" FontWeight="Bold">
+    <Grid Margin="0,0,0,15">
+        <TextBox HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="Не угаданные слова:" VerticalAlignment="Top" Width="265"/>
+        <TextBox HorizontalAlignment="Left" Name="tb_list" Margin="10,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="314" Height="310"/>
+
+    </Grid>
+</Window>
