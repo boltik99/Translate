@@ -12,7 +12,7 @@ namespace Translate
 {
     public partial class MainWindow : Window
     {
-        Window1 win = new Window1();
+
 
         static int capacity = 2000;
         static int size_block = 100;
@@ -56,7 +56,8 @@ namespace Translate
         public void wr()
         {
             var newList = new List<string>(wrong_list.Distinct());
-
+            Window1 win = new Window1();
+            win.tb_list.Text = "";
             for (int i = 0; i < newList.Count; i += 2)
             {
                 win.tb_list.Text += newList[i]; 
@@ -65,6 +66,7 @@ namespace Translate
                 win.tb_list.Text += "\r\n";
             }
             win.Show();
+            wrong_list.Clear();
         }
 
         public void add_50_words_to_block(int number_block)
@@ -135,6 +137,7 @@ namespace Translate
                             tb2.Text = "";
                             tb3.Text = "";
                             tb4.Text = "";
+                            
                             right = 0;
                             chet = 0;
                             wr();
@@ -183,6 +186,7 @@ namespace Translate
                             tb2.Text = "";
                             tb3.Text = "";
                             tb4.Text = "";
+                            
                             right = 0;
                             chet = 0;
                             wr();

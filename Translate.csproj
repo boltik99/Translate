@@ -8,6 +8,7 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+
 <ItemGroup>
     <Content Include="library.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
