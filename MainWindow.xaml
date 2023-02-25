@@ -21,7 +21,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <TextBox x:Name="tb3" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="" FontFamily="Comic Sans MS"/>
+        <TextBox x:Name="tb3" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="" FontFamily="Comic Sans MS" PreviewTextInput="NumberValidationTextBox"/>
         <TextBox x:Name="tb1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="" FontFamily="Comic Sans MS" FontSize="36" FontWeight="Bold" Style="{StaticResource placeHolder}" Tag="Enter проверять, L.Ctrl чистка, R.Shift перевод"/>
         <TextBox x:Name="tb2" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="" FontFamily="Comic Sans MS" FontSize="36" FontWeight="Bold" KeyDown="TextBox_KeyDown"/>
         <TextBox x:Name="tb4" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="" FontFamily="Comic Sans MS"/>
