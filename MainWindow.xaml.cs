@@ -4,8 +4,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.IO;
-using System.Windows.Resources;
-using System.Windows.Documents;
 using System.Linq;
 
 namespace Translate
@@ -95,6 +93,13 @@ namespace Translate
             if (rb2.IsChecked.HasValue && rb2.IsChecked.Value) while (index % 2 == 1) { index = r.Next(0, block.Count); }
             return index;
         }
+        // public int random_index()
+        // {
+        //     Random r = new Random();
+        //     int index = 2 * r.Next(0, block.Count / 2);
+        //     index += rb1.IsChecked.HasValue && rb1.IsChecked.Value && index % 2 == 0 ? 1 : 0;
+        //     return index;
+        // }
         public void bt1_Click(object sender, RoutedEventArgs e)
         {
             //проверка пустоты ТБ - четный индекс это англ слово
