@@ -4,9 +4,8 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.IO;
-using System.Windows.Resources;
-using System.Windows.Documents;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Translate
 {
@@ -15,6 +14,7 @@ namespace Translate
         bool check = false;
 
         static int capacity = 2000;
+        static int blockAmount = 20;
         static int size_block = 100;
 
         List<string> block = new List<string>();
@@ -52,7 +52,11 @@ namespace Translate
                 throw new Exception($"file {path} does not exist");
             }
         }
-
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
         public void wr()
         {
             var newList = new List<string>(wrong_list.Distinct());
@@ -63,28 +67,21 @@ namespace Translate
                 win.tb_list.Text += newList[i];
                 win.tb_list.Text += " -> ";
                 win.tb_list.Text += newList[i + 1];
+<<<<<<< HEAD
                 win.tb_list.Foreground = Brushes.Blue;
+=======
+>>>>>>> 16693f892e2c41a600546f2a3313c77a94ed652d
                 win.tb_list.Text += "\r\n";
             }
             win.Show();
             wrong_list.Clear();
         }
 
-        public void add_50_words_to_block(int number_block)
+        public void add_50_words_to_block(int blockIndex)
         {
-            if (number_block == 1)
+            for (int l = (blockIndex - 1) * 100; l < blockIndex * size_block; l++)
             {
-                for (int l = 0; l < size_block; l++)
-                {
-                    block.Add(lib[l]);
-                }
-            }
-            else
-            {
-                for (int l = (number_block - 1) * 100; l < (number_block - 1) * 100 + 100; l++)
-                {
-                    block.Add(lib[l]);
-                }
+                block.Add(lib[l]);
             }
         }
 
@@ -104,25 +101,33 @@ namespace Translate
         public int random_index()
         {
             Random r = new Random();
-            index = r.Next(0, block.Count);
-            if (rb1.IsChecked.HasValue && rb1.IsChecked.Value) while (index % 2 == 0) { index = r.Next(0, block.Count); }
-            if (rb2.IsChecked.HasValue && rb2.IsChecked.Value) while (index % 2 == 1) { index = r.Next(0, block.Count); }
+            int index = 2 * r.Next(0, block.Count / 2);
+            index += rb1.IsChecked.HasValue && rb1.IsChecked.Value ? 1 : 0;
             return index;
         }
         public void bt1_Click(object sender, RoutedEventArgs e)
         {
             //проверка пустоты ТБ - четный индекс это англ слово
-            if (!int.TryParse(tb3.Text, out int number_block))
+            if (int.TryParse(tb3.Text, out int number_block))
             {
-                MessageBox.Show("Введи значение дебил! Сверху в углу! От 1 до 20! ");
-                return;
+                if (number_block < 1 || blockAmount < number_block)
+                {
+                    MessageBox.Show($"значение должно быть от 1 до {blockAmount}!");
+                    return;
+                }
+            }
+            else if (tb3.Text == "")
+            {
+                var r = new Random();
+                number_block = r.Next(blockAmount) + 1;
+                tb3.Text = number_block.ToString();
             }
 
             //Добавляем в список 50 слов
             add_50_words_to_block(number_block);
 
             //вывод первого слова
-            index = random_index(); 
+            index = random_index();
             tb1.Text = block[index];
 
             rb1.IsEnabled = false;
@@ -146,7 +151,19 @@ namespace Translate
                         //exit
                         if (block.Count == 0)
                         {
+<<<<<<< HEAD
                             exit();
+=======
+                            MessageBox.Show("Правильно: " + right.ToString() + " из: " + chet.ToString());
+                            tb1.Text = "";
+                            tb2.Text = "";
+                            tb3.Text = "";
+                            tb4.Text = "";
+
+                            right = 0;
+                            chet = 0;
+                            wr();
+>>>>>>> 16693f892e2c41a600546f2a3313c77a94ed652d
                             return;
                         }
 
@@ -196,7 +213,19 @@ namespace Translate
                         //exit
                         if (block.Count == 0)
                         {
+<<<<<<< HEAD
                             exit();
+=======
+                            MessageBox.Show("Правильно: " + right.ToString() + " из: " + chet.ToString());
+                            tb1.Text = "";
+                            tb2.Text = "";
+                            tb3.Text = "";
+                            tb4.Text = "";
+
+                            right = 0;
+                            chet = 0;
+                            wr();
+>>>>>>> 16693f892e2c41a600546f2a3313c77a94ed652d
                             return;
                         }
 
