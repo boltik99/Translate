@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Translate"
         mc:Ignorable="d"
-        Title="Window1" Height="410" Width="350" FontSize="24" FontFamily="Comic Sans MS" FontWeight="Bold">
-    <Grid Margin="0,0,0,15">
+        Title="Window1" Height="600" Width="350" FontSize="24" FontFamily="Comic Sans MS" FontWeight="Bold">
+    <Grid>
         <TextBox HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="Не угаданные слова:" VerticalAlignment="Top" Width="265"/>
-        <TextBox HorizontalAlignment="Left" Name="tb_list" Margin="10,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="314" Height="310"/>
+        <TextBox HorizontalAlignment="Center" Name="tb_list" Margin="0,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="330" Height="530"/>
 
     </Grid>
 </Window>

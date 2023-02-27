@@ -12,7 +12,7 @@ namespace Translate
 {
     public partial class MainWindow : Window
     {
-
+        bool check = false;
 
         static int capacity = 2000;
         static int size_block = 100;
@@ -60,9 +60,10 @@ namespace Translate
             win.tb_list.Text = "";
             for (int i = 0; i < newList.Count; i += 2)
             {
-                win.tb_list.Text += newList[i]; 
-                win.tb_list.Text += " -> "; 
-                win.tb_list.Text += newList[i + 1]; 
+                win.tb_list.Text += newList[i];
+                win.tb_list.Text += " -> ";
+                win.tb_list.Text += newList[i + 1];
+                win.tb_list.Foreground = Brushes.Blue;
                 win.tb_list.Text += "\r\n";
             }
             win.Show();
@@ -85,6 +86,19 @@ namespace Translate
                     block.Add(lib[l]);
                 }
             }
+        }
+
+        public void exit()
+        {
+            MessageBox.Show("Правильно: " + right.ToString() + " из: " + chet.ToString());
+            tb1.Text = "";
+            tb2.Text = "";
+            tb3.Text = "";
+            tb4.Text = "";
+
+            right = 0;
+            chet = 0;
+            wr();
         }
 
         public int random_index()
@@ -132,15 +146,7 @@ namespace Translate
                         //exit
                         if (block.Count == 0)
                         {
-                            MessageBox.Show("Правильно: " + right.ToString() + " из: " + chet.ToString());
-                            tb1.Text = "";
-                            tb2.Text = "";
-                            tb3.Text = "";
-                            tb4.Text = "";
-                            
-                            right = 0;
-                            chet = 0;
-                            wr();
+                            exit();
                             return;
                         }
 
@@ -150,6 +156,7 @@ namespace Translate
                         tb1.Text = block[index];
                         tb2.Foreground = Brushes.Green;
                         tb4.Text = "Правильно: " + right.ToString() + " из: " + chet.ToString();
+                        check = false;
                     }
                     else
                     {
@@ -161,7 +168,15 @@ namespace Translate
                 if (e.Key != Key.Enter || e.Key == Key.Back) { tb2.Foreground = Brushes.Black; }
 
                 //подсказка
-                if (e.Key == Key.RightShift) { tb2.Foreground = Brushes.Blue; tb2.Text = block[index - 1]; right--; wrong_list.Add(block[index]); wrong_list.Add(block[index - 1]); }
+                if (e.Key == Key.RightShift) 
+                { 
+                    tb2.Foreground = Brushes.Blue; 
+                    tb2.Text = block[index - 1];
+                    if (!check) { right--; check = true; } 
+                    wrong_list.Add(block[index]); 
+                    wrong_list.Add(block[index - 1]);
+
+                }
 
                 //читска tb2
                 if (e.Key == Key.LeftCtrl) tb2.Text = "";
@@ -181,15 +196,7 @@ namespace Translate
                         //exit
                         if (block.Count == 0)
                         {
-                            MessageBox.Show("Правильно: " + right.ToString() + " из: " + chet.ToString());
-                            tb1.Text = "";
-                            tb2.Text = "";
-                            tb3.Text = "";
-                            tb4.Text = "";
-                            
-                            right = 0;
-                            chet = 0;
-                            wr();
+                            exit();
                             return;
                         }
 
@@ -199,6 +206,7 @@ namespace Translate
                         tb1.Text = block[index];
                         tb2.Foreground = Brushes.Green;
                         tb4.Text = "Правильно: " + right.ToString() + " из: " + chet.ToString();
+                        check = false;
                     }
                     else
                     {
@@ -210,7 +218,14 @@ namespace Translate
                 if (e.Key != Key.Enter || e.Key == Key.Back) { tb2.Foreground = Brushes.Black; }
 
                 //подсказка
-                if (e.Key == Key.RightShift) { tb2.Foreground = Brushes.Blue; tb2.Text = block[index + 1]; right--; wrong_list.Add(block[index]); wrong_list.Add(block[index + 1]); }
+                if (e.Key == Key.RightShift) 
+                { 
+                    tb2.Foreground = Brushes.Blue; 
+                    tb2.Text = block[index + 1];
+                    if (!check) { right--; check = true; }
+                    wrong_list.Add(block[index]); 
+                    wrong_list.Add(block[index + 1]); 
+                }
 
                 //читска tb2
                 if (e.Key == Key.LeftCtrl) tb2.Text = "";

@@ -2994,3 +2994,12 @@ inevitably
 
 perceive
 воспринимать
+
+gear
+шестерни
+
+inevitably
+неизбежно
+
+perceive
+воспринимать
