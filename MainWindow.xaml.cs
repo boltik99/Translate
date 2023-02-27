@@ -61,16 +61,13 @@ namespace Translate
         {
             var newList = new List<string>(wrong_list.Distinct());
             Window1 win = new Window1();
+            win.tb_list.Foreground = Brushes.Blue;
             win.tb_list.Text = "";
             for (int i = 0; i < newList.Count; i += 2)
             {
                 win.tb_list.Text += newList[i];
                 win.tb_list.Text += " -> ";
                 win.tb_list.Text += newList[i + 1];
-<<<<<<< HEAD
-                win.tb_list.Foreground = Brushes.Blue;
-=======
->>>>>>> 16693f892e2c41a600546f2a3313c77a94ed652d
                 win.tb_list.Text += "\r\n";
             }
             win.Show();
@@ -151,19 +148,7 @@ namespace Translate
                         //exit
                         if (block.Count == 0)
                         {
-<<<<<<< HEAD
                             exit();
-=======
-                            MessageBox.Show("Правильно: " + right.ToString() + " из: " + chet.ToString());
-                            tb1.Text = "";
-                            tb2.Text = "";
-                            tb3.Text = "";
-                            tb4.Text = "";
-
-                            right = 0;
-                            chet = 0;
-                            wr();
->>>>>>> 16693f892e2c41a600546f2a3313c77a94ed652d
                             return;
                         }
 
@@ -213,19 +198,7 @@ namespace Translate
                         //exit
                         if (block.Count == 0)
                         {
-<<<<<<< HEAD
                             exit();
-=======
-                            MessageBox.Show("Правильно: " + right.ToString() + " из: " + chet.ToString());
-                            tb1.Text = "";
-                            tb2.Text = "";
-                            tb3.Text = "";
-                            tb4.Text = "";
-
-                            right = 0;
-                            chet = 0;
-                            wr();
->>>>>>> 16693f892e2c41a600546f2a3313c77a94ed652d
                             return;
                         }
 
